@@ -1,31 +1,27 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-class MyDocument extends Document {
-	static async getInitialProps(ctx) {
-		const initialProps = await Document.getInitialProps(ctx);
-		return { ...initialProps };
-	}
-
+export default class MyDocument extends Document {
 	render() {
 		return (
-			<Html lang="pl">
+			<Html>
 				<Head>
-					{/* Global site tag (gtag.js) - Google Analytics */}
+					{/* Global Site Tag (gtag.js) - Google Analytics */}
 					<script
 						async
 						src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-					></script>
+					/>
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-    
-                    gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
-                    `,
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+            });
+          `,
 						}}
-					></script>
+					/>
 				</Head>
 				<body>
 					<Main />
@@ -35,5 +31,3 @@ class MyDocument extends Document {
 		);
 	}
 }
-
-export default MyDocument;
