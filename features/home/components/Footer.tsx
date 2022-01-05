@@ -1,4 +1,6 @@
 import Twemoji from "@shared/components/Twemoji";
+import Link from "next/link";
+import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 
 const Footer = () => {
 	return (
@@ -20,7 +22,7 @@ const Footer = () => {
 					</button>
 				</form>
 			</div>
-			<div className="mt-4 md:mt-0 w-full md:w-1/2 md:text-right">
+			<div className="mt-4 md:mt-0 w-full md:w-1/2 md:text-right flex flex-col items-start md:items-end">
 				<h2 className="text-xl">Kontakt</h2>
 				<span className="text-gray-400 max-w-md md:text-sm text-xs">
 					email:{" "}
@@ -28,6 +30,32 @@ const Footer = () => {
 						maciej.wiatr00@gmail.com
 					</span>
 				</span>
+				<ul className="flex space-x-4 mt-4 md:mt-auto text-xl">
+					<li>
+						<Link
+							href="https://linkedin.com/in/maciej-wiatr"
+							passHref
+						>
+							<a className="text-gray-400 hover:text-gray-600">
+								<FiLinkedin />
+							</a>
+						</Link>
+					</li>
+					<li>
+						<Link href="https://github.com/MaciejWiatr" passHref>
+							<a className="text-gray-400 hover:text-gray-600">
+								<FiGithub />
+							</a>
+						</Link>
+					</li>
+					<li>
+						<Link href="https://twitter.com/maciej_wiatr" passHref>
+							<a className="text-gray-400 hover:text-gray-600">
+								<FiTwitter />
+							</a>
+						</Link>
+					</li>
+				</ul>
 			</div>
 		</footer>
 	);
