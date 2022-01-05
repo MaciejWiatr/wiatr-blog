@@ -11,7 +11,7 @@ const mockTags = [
 	"express",
 ];
 
-const ArticleList = () => {
+const ArticleList = ({ articles }) => {
 	return (
 		<section>
 			<h2 className="font-semibold mb-6">Wyszukaj artykuły po tagach</h2>
@@ -29,26 +29,35 @@ const ArticleList = () => {
 				id="articles"
 				className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
 			>
-				<article className="col-span-1   relative overflow-hidden cursor-pointer rounded-xl">
-					<div className="overflow-hidden relative rounded-xl">
-						<Image
-							width={300}
-							height={400}
-							layout="responsive"
-							className="object-cover rounded-xl overflow-hidden hover:scale-110 transition-all"
-							src={"https://placeimg.com/300/480/arch"}
-							alt="article image"
-						></Image>
-					</div>
-					<div className="mt-2 flex flex-col">
-						<p className="text-lg text-gray-500">19 Lipca - 5min</p>
-						<h3 className="text-2xl font-semibold hover:underline ">
-							<Link href="/article/test">
-								<a>To jest testowy artykuł test test</a>
-							</Link>
-						</h3>
-					</div>
-				</article>
+				{articles.map((article) => (
+					<article
+						key={article.title}
+						className="col-span-1   relative overflow-hidden cursor-pointer rounded-xl"
+					>
+						<div className="overflow-hidden relative rounded-xl">
+							<Image
+								width={300}
+								height={400}
+								layout="responsive"
+								className="object-cover rounded-xl overflow-hidden hover:scale-110 transition-all"
+								src={article.image.url}
+								alt="article image"
+							></Image>
+						</div>
+						<div className="mt-2 flex flex-col">
+							<p className="text-lg text-gray-500">
+								{new Date(
+									article.createdAt
+								).toLocaleDateString()}
+							</p>
+							<h3 className="text-2xl font-semibold hover:underline ">
+								<Link href={`/article/${article.slug}`}>
+									<a>{article.title}</a>
+								</Link>
+							</h3>
+						</div>
+					</article>
+				))}
 			</section>
 		</section>
 	);

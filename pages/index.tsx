@@ -1,17 +1,40 @@
+import { gql } from "@apollo/client";
 import { ArticleList, Footer, Header } from "@features/home";
-import Twemoji from "@shared/components/Twemoji";
+import Encouragement from "@features/home/components/Encouragement";
 import HomeLayout from "@shared/layouts/HomeLayout";
+import client from "@shared/lib/apollo-client";
 
-export default function Home() {
+export default function Home({ articles }) {
 	return (
 		<HomeLayout>
 			<Header />
-			<ArticleList />
-			<section className="pt-[40vh] pb-10 text-gray-400 text-center flex items-center justify-center">
-				<p className="mr-2">Wow, ale fajnie że tutaj dotarłeś!</p>{" "}
-				<Twemoji emoji={"🎉"} />
-			</section>
+			<ArticleList articles={articles} />
+			<Encouragement />
 			<Footer />
 		</HomeLayout>
 	);
+}
+
+export async function getStaticProps() {
+	const { data } = await client.query({
+		query: gql`
+			query GetCategories {
+				articles(orderBy: updatedAt_DESC) {
+					categories
+					title
+					image {
+						url
+					}
+					createdAt
+					slug
+				}
+			}
+		`,
+	});
+
+	return {
+		props: {
+			articles: data.articles,
+		},
+	};
 }
