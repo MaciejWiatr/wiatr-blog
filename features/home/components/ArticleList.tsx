@@ -43,7 +43,7 @@ const ArticleList = ({ articles, tags }) => {
 					(article) => (
 						<article
 							key={article.title}
-							className="col-span-1   relative overflow-hidden cursor-pointer rounded-xl"
+							className="col-span-1 relative overflow-hidden cursor-pointer rounded-xl"
 						>
 							<div className="overflow-hidden relative rounded-xl">
 								<Image

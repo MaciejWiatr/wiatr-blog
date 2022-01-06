@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html,
+body {
+	padding: 0;
+	margin: 0;
+	font-family: Poppins, sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: Poppins, sans-serif;
+}
+
+article#markdown {
+	@apply text-gray-300 leading-6;
+
+	* {
+		@apply mt-4 mb-4;
+	}
+
+	h1 {
+		@apply text-4xl pt-4 pb-4 text-gray-100;
+	}
+	blockquote {
+		@apply bg-green-900 rounded-lg p-6 text-white relative overflow-hidden bg-opacity-30;
+		&::before {
+			content: "";
+			@apply absolute w-1 bg-green-400 h-full top-0 left-0;
+		}
+	}
+
+	pre {
+		@apply w-full rounded-lg mt-16 mb-16 bg-blue-500 p-6 bg-opacity-20 border border-blue-400;
+	}
+
+	iframe {
+		@apply w-full h-96 rounded-lg mt-16 mb-16;
+	}
+
+	hr {
+		@apply h-[0px] text-gray-600 bg-gray-600 border-none mt-8 mb-8;
+	}
+
+	table {
+		@apply w-full;
+		thead {
+			@apply w-full h-full;
+		}
+		tr {
+			@apply flex flex-row w-full border border-gray-700  my-0;
+		}
+		th {
+			@apply flex-grow text-left border-gray-700 border-r last:border-none  p-4 font-medium;
+		}
+		td {
+			@apply flex-grow text-left border-r last:border-none border-gray-700 p-4 text-sm;
+		}
+	}
+}
