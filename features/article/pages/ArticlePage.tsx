@@ -45,13 +45,17 @@ const ArticlePage = ({ article }) => {
 					></Image>
 				</div>
 			</header>
-			<article id="markdown" className="md:mx-24 pt-12 pb-12">
-				<ReactMarkdown
+			<article
+				id="markdown"
+				className="md:mx-24 pt-12 pb-12"
+				dangerouslySetInnerHTML={{ __html: article.content.html }}
+			>
+				{/* <ReactMarkdown
 					rehypePlugins={[rehypeRaw]}
 					remarkPlugins={[remarkGfm]}
 				>
 					{article.content.markdown}
-				</ReactMarkdown>
+				</ReactMarkdown> */}
 			</article>
 		</ArticleLayout>
 	);

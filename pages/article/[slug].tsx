@@ -44,6 +44,7 @@ export async function getStaticProps({ params }) {
 					}
 					content {
 						markdown
+                        html
 					}
 					createdAt
 				}
