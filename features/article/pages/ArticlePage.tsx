@@ -26,8 +26,7 @@ const mockArticle = {
 	},
 };
 
-const ArticlePage = () => {
-	const article = mockArticle.data.article;
+const ArticlePage = ({ article }) => {
 	return (
 		<ArticleLayout>
 			<header className="mt-[20vh]">
