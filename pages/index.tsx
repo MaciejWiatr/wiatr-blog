@@ -31,5 +31,6 @@ export async function getStaticProps() {
 			articles: data.articles,
 			tags: data.tags,
 		},
+		revalidate: 300,
 	};
 }
