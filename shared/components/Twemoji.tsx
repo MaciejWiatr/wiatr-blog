@@ -11,8 +11,6 @@ const Twemoji = ({
 	h?: number;
 }) => {
 	const img = emoji.codePointAt(0).toString(16);
-
-	console.log(img);
 	return (
 		<Image
 			src={`https://twemoji.maxcdn.com/v/latest/svg/${img}.svg`}
