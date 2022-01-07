@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import filterArticlesByTagName from "../utils/filterArticles";
 import cls from "classnames";
+import corgi from "@shared/assets/corgi.jpg";
 
 const ArticleList = ({ articles, tags }) => {
 	const [activeCategory, setActiveCategory] = useState("");
@@ -41,33 +42,38 @@ const ArticleList = ({ articles, tags }) => {
 			>
 				{filterArticlesByTagName(articles, activeCategory).map(
 					(article) => (
-						<article
+						<Link
+							href={`/article/${article.slug}`}
 							key={article.title}
-							className="col-span-1 relative overflow-hidden cursor-pointer rounded-xl"
+							passHref
 						>
-							<div className="overflow-hidden relative rounded-xl">
-								<Image
-									width={300}
-									height={400}
-									layout="responsive"
-									className="object-cover rounded-xl overflow-hidden hover:scale-110 transition-all"
-									src={article.image.url}
-									alt="article image"
-								></Image>
-							</div>
-							<div className="mt-2 flex flex-col">
-								<p className="text-lg text-gray-500">
-									{new Date(
-										article.createdAt
-									).toLocaleDateString()}
-								</p>
-								<h3 className="text-2xl font-semibold hover:underline ">
-									<Link href={`/article/${article.slug}`}>
-										<a>{article.title}</a>
-									</Link>
-								</h3>
-							</div>
-						</article>
+							<a className="col-span-1 relative overflow-hidden cursor-pointer rounded-xl">
+								<div className="overflow-hidden relative rounded-xl">
+									<Image
+										width={300}
+										height={400}
+										layout="responsive"
+										className="object-cover rounded-xl overflow-hidden hover:scale-110 transition-all"
+										src={article.image.url}
+										alt="article image"
+										loading="lazy"
+										placeholder="blur"
+										blurDataURL={corgi.src}
+										quality={50}
+									></Image>
+								</div>
+								<div className="mt-2 flex flex-col">
+									<p className="text-lg text-gray-500">
+										{new Date(
+											article.createdAt
+										).toLocaleDateString()}
+									</p>
+									<h3 className="text-2xl font-semibold hover:underline ">
+										<p>{article.title}</p>
+									</h3>
+								</div>
+							</a>
+						</Link>
 					)
 				)}
 			</section>
