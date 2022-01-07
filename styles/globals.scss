@@ -8,6 +8,7 @@ body {
 	padding: 0;
 	margin: 0;
 	font-family: Poppins, sans-serif;
+	background-color: #1f2937;
 }
 
 a {
@@ -103,4 +104,20 @@ article#markdown {
 			@apply text-left border-r last:border-none border-gray-700 px-4 text-sm flex-1;
 		}
 	}
+}
+
+.page-enter {
+	opacity: 0;
+}
+.page-enter-active {
+	opacity: 1;
+	transition: opacity 300ms, transform 300ms;
+}
+.page-exit {
+	opacity: 1;
+}
+
+.page-exit-active {
+	opacity: 0;
+	transition: opacity 300ms, transform 300ms;
 }
