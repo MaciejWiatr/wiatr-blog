@@ -7,7 +7,8 @@ function MyApp({ Component, pageProps, router }) {
 	return (
 		<>
 			<Head>
-				<title>Blog Macieja Wiatra</title>
+				<link rel="icon" href="/favicon.png" />
+				<title>Blog o programowaniu - Maciej Wiatr</title>
 			</Head>
 			<SwitchTransition mode="out-in">
 				<CSSTransition
