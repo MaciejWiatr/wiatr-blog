@@ -19,6 +19,7 @@
     "react-markdown": "^7.1.2",
     "react-transition-group": "^4.4.2",
     "react-twemoji": "^0.3.0",
+    "react-use": "^17.3.2",
     "rehype-raw": "^6.1.1",
     "remark-gfm": "^3.0.1",
     "sass": "^1.46.0",
