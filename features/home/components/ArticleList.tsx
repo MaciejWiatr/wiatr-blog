@@ -18,8 +18,8 @@ const ArticleList = ({ articles, tags }) => {
 
 	return (
 		<section>
-			<h2 className="font-semibold mb-6">Wyszukaj artykuły po tagach</h2>
-			<ul className="flex flex-wrap gap-3 w-full">
+			<h2 className="mb-6 font-semibold">Wyszukaj artykuły po tagach</h2>
+			<ul className="flex flex-wrap w-full gap-3">
 				{tags.map((tag) => (
 					<button
 						onClick={() => changeActiveCategory(tag.name)}
@@ -38,7 +38,7 @@ const ArticleList = ({ articles, tags }) => {
 			</ul>
 			<section
 				id="articles"
-				className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+				className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3"
 			>
 				{filterArticlesByTagName(articles, activeCategory).map(
 					(article) => (
@@ -47,13 +47,13 @@ const ArticleList = ({ articles, tags }) => {
 							key={article.title}
 							passHref
 						>
-							<a className="col-span-1 relative overflow-hidden cursor-pointer rounded-xl">
-								<div className="overflow-hidden relative rounded-xl">
+							<a className="relative col-span-1 overflow-hidden cursor-pointer rounded-xl">
+								<div className="relative overflow-hidden rounded-xl">
 									<Image
 										width={300}
 										height={400}
 										layout="responsive"
-										className="object-cover rounded-xl overflow-hidden hover:scale-110 transition-all"
+										className="object-cover overflow-hidden transition-all rounded-xl hover:scale-110"
 										src={article.image.url}
 										alt="article image"
 										loading="lazy"
@@ -62,7 +62,7 @@ const ArticleList = ({ articles, tags }) => {
 										quality={50}
 									></Image>
 								</div>
-								<div className="mt-2 flex flex-col">
+								<div className="flex flex-col mt-2">
 									<p className="text-lg text-gray-500">
 										{new Date(
 											article.createdAt

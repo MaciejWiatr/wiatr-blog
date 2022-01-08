@@ -4,35 +4,35 @@ import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 
 const Footer = () => {
 	return (
-		<footer className="border-t border-gray-600 pt-8 pb-8 flex flex-wrap">
+		<footer className="flex flex-wrap pt-8 pb-8 border-t border-gray-600">
 			<div className="w-full md:w-1/2">
 				<h2 className="text-xl font-semibold">
 					Może zostaniesz na dłużej?
 				</h2>
-				<p className="text-gray-400 max-w-md md:text-sm text-xs my-2">
+				<p className="max-w-md my-2 text-xs text-gray-400 md:text-sm">
 					Zapisz się do mojego newslettera aby regularnie otrzymywać
 					informacje o nowych postach
 				</p>
-				<form className="mt-4 space-x-2 flex">
+				<form className="flex mt-4 space-x-2">
 					<input
 						placeholder="Twój adres email"
-						className="bg-gray-700 rounded-xl p-2 px-4 h-12 placeholder:text-sm w-full max-w-xs focus:outline-none focus:ring-2"
+						className="w-full h-12 max-w-xs p-2 px-4 bg-gray-700 rounded-xl placeholder:text-sm focus:outline-none focus:ring-2"
 					/>
-					<button className="text-white h-12 p-2 pl-4 pr-4 flex items-center hover:bg-gray-700 transition-all  border border-gray-600 rounded-xl">
-						<span className="font-medium text-sm mr-1">Dołącz</span>{" "}
+					<button className="flex items-center h-12 p-2 pl-4 pr-4 text-white transition-all border border-gray-600 hover:bg-gray-700 rounded-xl">
+						<span className="mr-1 text-sm font-medium">Dołącz</span>{" "}
 						<Twemoji emoji={"❤"} />
 					</button>
 				</form>
 			</div>
-			<div className="mt-4 md:mt-0 w-full md:w-1/2 md:text-right flex flex-col items-start md:items-end">
+			<div className="flex flex-col items-start w-full mt-4 md:mt-0 md:w-1/2 md:text-right md:items-end">
 				<h2 className="text-xl font-semibold">Kontakt</h2>
-				<span className="text-gray-400 max-w-md md:text-sm text-xs my-2">
+				<span className="max-w-md my-2 text-xs text-gray-400 md:text-sm">
 					email:{" "}
 					<span className="font-semibold">
 						maciej.wiatr00@gmail.com
 					</span>
 				</span>
-				<ul className="flex space-x-4 mt-4 md:mt-auto text-xl">
+				<ul className="flex mt-4 space-x-4 text-xl md:mt-auto">
 					<li>
 						<Link
 							href="https://linkedin.com/in/maciej-wiatr"

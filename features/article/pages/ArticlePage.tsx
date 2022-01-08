@@ -7,7 +7,7 @@ const ArticlePage = ({ article }) => {
 			<header className="mt-[20vh]">
 				<div className="md:mx-24">
 					<h1 className="text-5xl font-normal">{article.title}</h1>
-					<p className="text-lg text-gray-400 mt-2 font-semibold">
+					<p className="mt-2 text-lg font-semibold text-gray-400">
 						{new Date(article.createdAt).toLocaleDateString()}
 					</p>
 				</div>
@@ -16,13 +16,13 @@ const ArticlePage = ({ article }) => {
 						src={article.image.url}
 						alt={article.title}
 						layout="fill"
-						className="rounded-xl object-cover"
+						className="object-cover rounded-xl"
 					></Image>
 				</div>
 			</header>
 			<article
 				id="markdown"
-				className="md:mx-24 pt-12 pb-12"
+				className="pt-12 pb-12 md:mx-24"
 				dangerouslySetInnerHTML={{ __html: article.content.html }}
 			>
 				{/* <ReactMarkdown
