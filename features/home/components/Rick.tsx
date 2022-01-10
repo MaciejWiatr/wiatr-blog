@@ -3,7 +3,7 @@ import RickGIF from "@shared/assets/rick.gif";
 
 const Rick = () => {
 	return (
-		<div className="flex justify-center grayscale">
+		<div className="relative flex justify-center grayscale">
 			<Image
 				src={RickGIF}
 				width={114}
