@@ -4,6 +4,7 @@ import { useState } from "react";
 import filterArticlesByTagName from "../utils/filterArticles";
 import cls from "classnames";
 import corgi from "@shared/assets/corgi.jpg";
+import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 
 const ArticleList = ({ articles, tags }) => {
 	const [activeCategory, setActiveCategory] = useState("");
@@ -36,47 +37,64 @@ const ArticleList = ({ articles, tags }) => {
 					</button>
 				))}
 			</ul>
-			<section
-				id="articles"
-				className="grid grid-cols-1 gap-8 mt-8 md:grid-cols-2 lg:grid-cols-3"
-			>
-				{filterArticlesByTagName(articles, activeCategory).map(
-					(article) => (
-						<Link
-							href={`/article/${article.slug}`}
-							key={article.title}
-							passHref
-						>
-							<a className="relative col-span-1 overflow-hidden cursor-pointer rounded-xl">
-								<div className="relative overflow-hidden rounded-xl">
-									<Image
-										width={300}
-										height={400}
-										layout="responsive"
-										className="object-cover overflow-hidden transition-all rounded-xl hover:scale-110"
-										src={article.image.url}
-										alt="article image"
-										loading="lazy"
-										placeholder="blur"
-										blurDataURL={corgi.src}
-										quality={50}
-									></Image>
-								</div>
-								<div className="flex flex-col mt-2">
-									<p className="text-lg text-gray-500">
-										{new Date(
-											article.createdAt
-										).toLocaleDateString()}
-									</p>
-									<h3 className="text-2xl font-semibold hover:underline ">
-										<p>{article.title}</p>
-									</h3>
-								</div>
-							</a>
-						</Link>
-					)
-				)}
-			</section>
+			<AnimateSharedLayout>
+				<motion.section
+					layout
+					id="articles"
+					className="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3"
+				>
+					<AnimatePresence>
+						{filterArticlesByTagName(articles, activeCategory).map(
+							(article) => (
+								<Link
+									href={`/article/${article.slug}`}
+									key={article.title}
+									passHref
+								>
+									<motion.a
+										layout
+										initial={{
+											opacity: 0,
+										}}
+										animate={{
+											opacity: 1,
+										}}
+										exit={{
+											opacity: 0,
+										}}
+										className="relative col-span-1 overflow-hidden cursor-pointer rounded-xl"
+									>
+										<div className="relative overflow-hidden rounded-xl">
+											<Image
+												width={300}
+												height={400}
+												layout="responsive"
+												className="object-cover overflow-hidden transition-all rounded-xl hover:scale-110"
+												src={article.image.url}
+												alt="article image"
+												loading="lazy"
+												placeholder="blur"
+												blurDataURL={corgi.src}
+												quality={50}
+											></Image>
+										</div>
+										<div className="flex flex-col mt-2">
+											<p className="text-lg text-gray-500">
+												{new Date(
+													article.createdAt
+												).toLocaleDateString()}
+											</p>
+											<h3 className="text-2xl font-semibold hover:underline ">
+												<p>{article.title}</p>
+											</h3>
+										</div>
+									</motion.a>
+								</Link>
+							)
+						)}
+					</AnimatePresence>
+				</motion.section>
+			</AnimateSharedLayout>
 		</section>
 	);
 };
