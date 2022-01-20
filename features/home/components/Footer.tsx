@@ -3,7 +3,7 @@ import Link from "next/link";
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import RickGIF from "./Rick";
 
-const Footer = () => {
+const Footer = ({ disableRick }) => {
 	return (
 		<>
 			<footer className="flex flex-wrap pt-8 pb-8 border-t border-gray-600">
@@ -70,7 +70,7 @@ const Footer = () => {
 					</ul>
 				</div>
 			</footer>
-			<RickGIF />
+			{!disableRick && <RickGIF />}
 		</>
 	);
 };
