@@ -1,3 +1,5 @@
+import { useEffect, useMemo, useState } from "react";
+import useReactionStore from "../store/useReactionStore";
 import ReactionItem from "./ReactionItem";
 
 const reactionList = [
@@ -19,7 +21,18 @@ const reactionList = [
 	},
 ];
 
-const Reactions = () => {
+const Reactions = ({ slug }) => {
+	const { getReaction, addReaction, reactions } = useReactionStore();
+	const [active, setActive] = useState(null);
+
+	useEffect(() => {
+		setActive(getReaction(slug));
+	}, [getReaction, reactions, slug]);
+
+	const changeReaction = (reaction) => {
+		addReaction(slug, reaction);
+	};
+
 	return (
 		<div className="my-12 rounded-xl md:mx-24">
 			<h2 className="text-lg text-center text-gray-400">
@@ -27,7 +40,12 @@ const Reactions = () => {
 			</h2>
 			<ul className="flex flex-wrap justify-center gap-3 mt-4">
 				{reactionList.map((reaction) => (
-					<ReactionItem key={reaction.name} {...reaction} />
+					<ReactionItem
+						setReaction={changeReaction}
+						active={active === reaction.name}
+						key={reaction.name}
+						{...reaction}
+					/>
 				))}
 			</ul>
 		</div>

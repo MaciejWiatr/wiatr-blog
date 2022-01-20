@@ -1,12 +1,14 @@
 import Twemoji from "@shared/components/Twemoji";
 import { motion, useAnimation } from "framer-motion";
+import cls from "classnames";
 
-const ReactionItem = ({ emoji, name }) => {
+const ReactionItem = ({ emoji, name, active, setReaction }) => {
 	const containerControls = useAnimation();
 	const emojiControls = useAnimation();
 
 	const onClick = async () => {
 		containerControls.set({ y: -7 });
+		setReaction(name);
 		await Promise.all([
 			containerControls.start((i) => ({
 				rotateZ: i * 72,
@@ -51,7 +53,12 @@ const ReactionItem = ({ emoji, name }) => {
 		<li>
 			<button
 				onClick={onClick}
-				className="flex items-center p-4 space-x-2 transition-all bg-gray-700 rounded-full hover:bg-gray-600"
+				className={cls(
+					"flex items-center p-4 space-x-2 transition-all bg-gray-700 rounded-full hover:bg-gray-600",
+					{
+						"ring-2 ring-white": active,
+					}
+				)}
 			>
 				<div className="relative flex items-center">
 					<motion.div

@@ -41,7 +41,7 @@ const ArticlePage = ({ article }) => {
 					{article.content.markdown}
 				</ReactMarkdown> */}
 			</article>
-			<Reactions />
+			<Reactions slug={article.slug} />
 			<Footer disableRick={true} />
 		</ArticleLayout>
 	);
