@@ -19,8 +19,6 @@ export async function getStaticPaths() {
 		params: { slug: article.slug },
 	}));
 
-	console.log(paths);
-
 	return {
 		paths: paths,
 		fallback: "blocking",
@@ -30,7 +28,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	const { slug } = params;
 
-	const { data } = await client.query({
+	let { data } = await client.query({
 		query: gql`
 			query GetArticle {
 				article(where: { slug: "${slug}" }) {
@@ -47,6 +45,7 @@ export async function getStaticProps({ params }) {
                         html
 					}
 					createdAt
+					views
 				}
 			}
 		`,
