@@ -1,9 +1,18 @@
+import { Footer } from "@features/home";
+import Head from "next/head";
 import Image from "next/image";
+import Reactions from "../components/Reactions";
+import useArticleViews from "../hooks/useArticleViews";
 import ArticleLayout from "../layouts/ArticleLayout";
 
 const ArticlePage = ({ article }) => {
+	// const views = useArticleViews(article.views, article.slug);
+
 	return (
 		<ArticleLayout>
+			<Head>
+				<title>{article.title} - Maciej Wiatr Blog</title>
+			</Head>
 			<header className="mt-[20vh]">
 				<div className="md:mx-24">
 					<h1 className="text-5xl font-normal">{article.title}</h1>
@@ -32,6 +41,8 @@ const ArticlePage = ({ article }) => {
 					{article.content.markdown}
 				</ReactMarkdown> */}
 			</article>
+			<Reactions />
+			<Footer disableRick={true} />
 		</ArticleLayout>
 	);
 };
