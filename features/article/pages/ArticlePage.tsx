@@ -2,7 +2,7 @@ import { Footer } from "@features/home";
 import Head from "next/head";
 import Image from "next/image";
 import Reactions from "../components/Reactions";
-import useArticleViews from "../hooks/useArticleViews";
+// import useArticleViews from "../hooks/useArticleViews";
 import ArticleLayout from "../layouts/ArticleLayout";
 
 const ArticlePage = ({ article }) => {
