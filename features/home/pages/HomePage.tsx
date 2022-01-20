@@ -8,7 +8,7 @@ export default function HomePage({ articles, tags }) {
 			<Header />
 			<ArticleList articles={articles} tags={tags} />
 			<Encouragement />
-			<Footer />
+			<Footer disableRick={false} />
 		</HomeLayout>
 	);
 }
