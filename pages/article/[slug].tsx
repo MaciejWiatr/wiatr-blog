@@ -32,6 +32,7 @@ export async function getStaticProps({ params }) {
 		query: gql`
 			query GetArticle {
 				article(where: { slug: "${slug}" }) {
+					id
 					title
 					tags {
 						name

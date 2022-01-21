@@ -2,11 +2,11 @@ import { Footer } from "@features/home";
 import Head from "next/head";
 import Image from "next/image";
 import Reactions from "../components/Reactions";
-// import useArticleViews from "../hooks/useArticleViews";
+import useArticleViews from "../hooks/useArticleViews";
 import ArticleLayout from "../layouts/ArticleLayout";
 
 const ArticlePage = ({ article }) => {
-	// const views = useArticleViews(article.views, article.slug);
+	const views = useArticleViews(article.id);
 
 	return (
 		<ArticleLayout>
@@ -17,7 +17,8 @@ const ArticlePage = ({ article }) => {
 				<div className="md:mx-24">
 					<h1 className="text-5xl font-normal">{article.title}</h1>
 					<p className="mt-2 text-lg font-semibold text-gray-400">
-						{new Date(article.createdAt).toLocaleDateString()}
+						{new Date(article.createdAt).toLocaleDateString()} -{" "}
+						{views} wyświetleń
 					</p>
 				</div>
 				<div className="relative w-full h-[500px] overflow-hidden mt-12">
