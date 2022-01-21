@@ -18,3 +18,9 @@ model views {
   id        String @id @default(dbgenerated()) @map("_id") @db.ObjectId
   articleId String
 }
+
+model email {
+  id      String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  email   String
+  created DateTime @default(now())
+}

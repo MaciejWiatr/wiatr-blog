@@ -15,7 +15,9 @@ const ArticlePage = ({ article }) => {
 			</Head>
 			<header className="mt-[20vh]">
 				<div className="md:mx-24">
-					<h1 className="text-5xl font-normal">{article.title}</h1>
+					<h1 className="text-5xl font-normal leading-tight">
+						{article.title}
+					</h1>
 					<p className="mt-2 text-lg font-semibold text-gray-400">
 						{new Date(article.createdAt).toLocaleDateString()} -{" "}
 						{views} wyświetleń

@@ -1,6 +1,10 @@
-import Twemoji from "@shared/components/Twemoji";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
+const NewsletterForm = dynamic(
+	() => import("@features/home/components/NewsletterForm"),
+	{ ssr: false }
+);
 import RickGIF from "./Rick";
 
 const Footer = ({ disableRick }) => {
@@ -15,18 +19,7 @@ const Footer = ({ disableRick }) => {
 						Zapisz się do mojego newslettera aby regularnie
 						otrzymywać informacje o nowych postach
 					</p>
-					<form className="flex mt-4 space-x-2">
-						<input
-							placeholder="Twój adres email"
-							className="w-full h-12 max-w-xs p-2 px-4 bg-gray-700 rounded-xl placeholder:text-sm focus:outline-none focus:ring-2"
-						/>
-						<button className="flex items-center h-12 p-2 pl-4 pr-4 text-white transition-all border border-gray-600 hover:bg-gray-700 rounded-xl">
-							<span className="mr-1 text-sm font-medium">
-								Dołącz
-							</span>{" "}
-							<Twemoji emoji={"❤"} />
-						</button>
-					</form>
+					<NewsletterForm />
 				</div>
 				<div className="flex flex-col items-start w-full mt-4 md:mt-0 md:w-1/2 md:text-right md:items-end">
 					<h2 className="text-xl font-semibold">Kontakt</h2>
