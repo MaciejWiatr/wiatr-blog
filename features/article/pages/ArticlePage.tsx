@@ -1,6 +1,5 @@
 import { Footer } from "@features/home";
 import { ArticleJsonLd, NextSeo } from "next-seo";
-import Head from "next/head";
 import Image from "next/image";
 import Reactions from "../components/Reactions";
 import useArticleViews from "../hooks/useArticleViews";
