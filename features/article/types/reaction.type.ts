@@ -1,1 +1,1 @@
-export type reactionType = "Kozacki" | "Lipa" | "Nudy" | "Wow";
+export type reactionType = "Super" | "Lipa" | "Nudy" | "Wow";

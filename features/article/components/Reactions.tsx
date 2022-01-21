@@ -5,7 +5,7 @@ import ReactionItem from "./ReactionItem";
 const reactionList = [
 	{
 		emoji: "😍",
-		name: "Kozacki",
+		name: "Super",
 	},
 	{
 		emoji: "😕",
