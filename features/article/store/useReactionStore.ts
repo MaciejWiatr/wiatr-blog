@@ -1,11 +1,13 @@
 import { reactionType } from "./../types/reaction.type";
 import create from "zustand";
 import { persist } from "zustand/middleware";
+import { nanoid } from "nanoid";
 
 interface IReactionStore {
 	reactions: {
 		[articleSlug: string]: reactionType;
 	};
+	userId: string;
 	addReaction: (articleSlug: string, reaction: reactionType) => void;
 	getReaction: (articleSlug: string) => string;
 }
@@ -13,6 +15,7 @@ interface IReactionStore {
 const useReactionStore = create<IReactionStore>(
 	persist(
 		(set, get) => ({
+			userId: nanoid(),
 			reactions: {},
 			addReaction(articleSlug, reaction) {
 				set((state) => ({
