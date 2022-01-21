@@ -3,9 +3,9 @@ import nc from "next-connect";
 import { PrismaClient } from "@prisma/client";
 
 const handler = nc<NextApiRequest, NextApiResponse>();
+const prisma = new PrismaClient();
 
 handler.post(async (req, res) => {
-	const prisma = new PrismaClient();
 	const { articleId, reactionName, userId } = req.body;
 
 	const exisingReaction = await prisma.reaction.findFirst({
