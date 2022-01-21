@@ -1,7 +1,10 @@
 import { Footer } from "@features/home";
 import { ArticleJsonLd, NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Reactions from "../components/Reactions";
+const Reactions = dynamic(() => import("../components/Reactions"), {
+	ssr: false,
+});
 import useArticleViews from "../hooks/useArticleViews";
 import ArticleLayout from "../layouts/ArticleLayout";
 
@@ -69,7 +72,7 @@ const ArticlePage = ({ article }) => {
 					{article.content.markdown}
 				</ReactMarkdown> */}
 			</article>
-			<Reactions slug={article.slug} />
+			<Reactions id={article.id} />
 			<Footer disableRick={true} />
 		</ArticleLayout>
 	);
