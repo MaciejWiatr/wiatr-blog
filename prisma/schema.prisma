@@ -8,8 +8,9 @@ datasource db {
   url      = env("MONGO_URI")
 }
 
-model reactions {
+model reaction {
   id        String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  userId    String
   articleId String
   reaction  String
 }

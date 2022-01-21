@@ -1,4 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
+import createOrUpdateReaction from "../api/reaction";
 import useReactionStore from "../store/useReactionStore";
 import ReactionItem from "./ReactionItem";
 
@@ -21,16 +22,17 @@ const reactionList = [
 	},
 ];
 
-const Reactions = ({ slug }) => {
-	const { getReaction, addReaction, reactions } = useReactionStore();
+const Reactions = ({ id }) => {
+	const { getReaction, addReaction, reactions, userId } = useReactionStore();
 	const [active, setActive] = useState(null);
 
 	useEffect(() => {
-		setActive(getReaction(slug));
-	}, [getReaction, reactions, slug]);
+		setActive(getReaction(id));
+	}, [getReaction, reactions, id]);
 
 	const changeReaction = (reaction) => {
-		addReaction(slug, reaction);
+		addReaction(id, reaction);
+		createOrUpdateReaction(id, reaction, userId);
 	};
 
 	return (

@@ -1,7 +1,10 @@
 import { Footer } from "@features/home";
-import Head from "next/head";
+import { ArticleJsonLd, NextSeo } from "next-seo";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Reactions from "../components/Reactions";
+const Reactions = dynamic(() => import("../components/Reactions"), {
+	ssr: false,
+});
 import useArticleViews from "../hooks/useArticleViews";
 import ArticleLayout from "../layouts/ArticleLayout";
 
@@ -10,9 +13,34 @@ const ArticlePage = ({ article }) => {
 
 	return (
 		<ArticleLayout>
-			<Head>
-				<title>{article.title} - Maciej Wiatr Blog</title>
-			</Head>
+			<NextSeo
+				title={`${article.title}`}
+				description={`${article.content.text.substr(0, 200)}...`}
+				openGraph={{
+					type: "website",
+					url: "https://blog.maciejwiatr.pl",
+					title: `${article.title}`,
+					description: `${article.content.text.substr(0, 200)}...`,
+					images: [
+						{
+							url: article.image.url,
+							width: 1200,
+							height: 630,
+						},
+					],
+				}}
+			/>
+			<ArticleJsonLd
+				url={`https://blog.maciejwiatr.pl/article/${article.slug}`}
+				title={article.title}
+				images={[article.image.url]}
+				datePublished={article.createdAt}
+				dateModified={article.updatedAt}
+				description={article.content.text.substr(0, 200)}
+				authorName={["Maciej Wiatr"]}
+				publisherName="Maciej Wiatr"
+				publisherLogo="https://blog.maciejwiatr.pl/favicon.png"
+			/>
 			<header className="mt-[20vh]">
 				<div className="md:mx-24">
 					<h1 className="text-5xl font-normal leading-tight">
@@ -44,7 +72,7 @@ const ArticlePage = ({ article }) => {
 					{article.content.markdown}
 				</ReactMarkdown> */}
 			</article>
-			<Reactions slug={article.slug} />
+			<Reactions id={article.id} />
 			<Footer disableRick={true} />
 		</ArticleLayout>
 	);
