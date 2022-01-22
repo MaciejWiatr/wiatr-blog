@@ -10,7 +10,6 @@ describe("Reactions should work properly", () => {
 		cy.get("[data-cy=reaction-Super]").click();
 		cy.wait("@reactionPost").its("request.body").should("deep.include", {
 			reactionName: "Super",
-			articleId: "ckyok8sg0174w0c995mvrz2wq",
 		});
 	});
 });
