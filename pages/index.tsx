@@ -9,6 +9,7 @@ export async function getStaticProps() {
 		query: gql`
 			query GetArticlesAndTags {
 				articles(orderBy: updatedAt_DESC) {
+					id
 					title
 					image {
 						url
