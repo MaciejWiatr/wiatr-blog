@@ -1,5 +1,7 @@
 name: Run tests on push
 on: [push]
+env:
+  NEXT_PUBLIC_API_URL: ${{secrets.NEXT_PUBLIC_API_URL}}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,8 +12,6 @@ jobs:
         uses: actions/setup-node@v2
       - name: Setup yarn
         run: npm install -g yarn
-      - name: Setup env variables
-        run: export NEXT_PUBLIC_API_URL=${{secrets.NEXT_PUBLIC_API_URL}}
       - name: Install deps
         run: yarn install
       - run: yarn build 
