@@ -23,3 +23,5 @@ describe("Newsletter form should validate and work properly", () => {
 		cy.get("[data-cy=newsletter-submit]").should("contain.text", "Dzięki");
 	});
 });
+
+export {};

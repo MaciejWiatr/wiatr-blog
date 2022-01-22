@@ -7,3 +7,5 @@ describe("Redirects work properly", () => {
 		cy.url().should("include", "/");
 	});
 });
+
+export {};

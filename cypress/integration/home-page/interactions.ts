@@ -17,3 +17,5 @@ describe("Home page interactions", () => {
 		cy.get("[data-cy=rickroll]").should("be.visible");
 	});
 });
+
+export {};

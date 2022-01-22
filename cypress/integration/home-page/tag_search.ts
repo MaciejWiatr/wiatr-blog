@@ -3,7 +3,7 @@ describe("Tag search work properly", () => {
 		cy.visit("/");
 		cy.get("[data-cy=tag-SQL]").click();
 		cy.get("[data-cy=article-link-ckyok8sg0174w0c995mvrz2wq]").should(
-			"not.be.visible"
+			"not.exist"
 		);
 	});
 	it("Should show post if it does include searched tag", () => {
@@ -13,3 +13,5 @@ describe("Tag search work properly", () => {
 		);
 	});
 });
+
+export {};
