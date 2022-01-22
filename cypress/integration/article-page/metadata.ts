@@ -1,5 +1,6 @@
 describe("Page contains correct metadata", () => {
 	beforeEach(() => {
+		cy.intercept("POST", "/api/article/view", { views: 10 }).as("views");
 		cy.visit("/article/jakich-technologii-uzylem-do-budowy-bloga-w-2021");
 	});
 	it("should have correct title", () => {
