@@ -52,6 +52,7 @@ const ReactionItem = ({ emoji, name, active, setReaction }) => {
 	return (
 		<li>
 			<button
+				data-cy={`reaction-${name}`}
 				onClick={onClick}
 				className={cls(
 					"flex items-center p-4 space-x-2 transition-all bg-gray-700 rounded-full hover:bg-gray-600",

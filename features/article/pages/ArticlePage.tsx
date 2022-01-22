@@ -48,7 +48,7 @@ const ArticlePage = ({ article }) => {
 					</h1>
 					<p className="mt-2 text-lg font-semibold text-gray-400">
 						{new Date(article.createdAt).toLocaleDateString()} -{" "}
-						{views} wyświetleń
+						<span data-cy="views">{views}</span> wyświetleń
 					</p>
 				</div>
 				<div className="relative w-full h-[500px] overflow-hidden mt-12">

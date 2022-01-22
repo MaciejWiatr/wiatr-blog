@@ -1,0 +1,21 @@
+name: Run tests on push
+on: [push]
+env:
+  NEXT_PUBLIC_API_URL: ${{secrets.NEXT_PUBLIC_API_URL}}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install node.js
+        uses: actions/setup-node@v2
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Install deps
+        run: yarn install
+      - run: yarn build 
+      - run: yarn e2e:headless
+      - name: Uninstall Yarn
+        if: always()
+        run: npm uninstall -g yarn
