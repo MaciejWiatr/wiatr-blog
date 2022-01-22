@@ -52,6 +52,7 @@ const ArticleList = ({ articles, tags }) => {
 									passHref
 								>
 									<motion.a
+										data-cy={`article-link-${article.id}`}
 										layout
 										initial={{
 											opacity: 0,

@@ -16,6 +16,7 @@ const ScrollUpButton = () => {
 
 	return (
 		<button
+			data-cy="scroll-up-button"
 			className={cls(
 				"fixed bottom-0 right-0 p-2 m-6 text-gray-400 transition-all bg-gray-700 rounded-full cursor-pointer hover:ring-2 ring-white",
 				{

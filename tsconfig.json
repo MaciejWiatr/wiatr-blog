@@ -19,6 +19,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "./",
+    "types": ["cypress"],
     "paths": {
       "@features/*": ["features/*"],
       "@shared/*": ["shared/*"]
