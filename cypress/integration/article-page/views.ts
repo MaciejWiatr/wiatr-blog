@@ -7,3 +7,5 @@ describe("Artilce views", () => {
 		cy.get("[data-cy=views]").should("contain", "10");
 	});
 });
+
+export {};

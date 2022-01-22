@@ -20,3 +20,5 @@ describe("Page contains correct metadata", () => {
 			);
 	});
 });
+
+export {};

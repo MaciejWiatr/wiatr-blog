@@ -13,3 +13,5 @@ describe("Reactions should work properly", () => {
 		});
 	});
 });
+
+export {};
