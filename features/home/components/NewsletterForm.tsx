@@ -37,6 +37,7 @@ const NewsletterForm: FC<INewsletterFormProps> = ({}) => {
 	return (
 		<form onSubmit={onSubmit} className="relative flex mt-4 space-x-2">
 			<input
+				data-cy="newsletter-input"
 				ref={inputRef}
 				placeholder="Twój adres email"
 				className={cls(
@@ -47,12 +48,16 @@ const NewsletterForm: FC<INewsletterFormProps> = ({}) => {
 				)}
 			/>
 			{formError && (
-				<p className="absolute text-xs text-red-500 -bottom-5 -left-2">
+				<p
+					data-cy="newsletter-error"
+					className="absolute text-xs text-red-500 -bottom-5 -left-2"
+				>
 					{formError}
 				</p>
 			)}
 			<button
 				type="submit"
+				data-cy="newsletter-submit"
 				className="flex items-center h-12 p-2 pl-4 pr-4 text-white transition-all border border-gray-600 hover:bg-gray-700 rounded-xl"
 			>
 				<span className="mr-1 text-sm font-medium">

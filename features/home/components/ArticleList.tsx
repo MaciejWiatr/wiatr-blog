@@ -23,6 +23,7 @@ const ArticleList = ({ articles, tags }) => {
 			<ul className="flex flex-wrap w-full gap-3">
 				{tags.map((tag) => (
 					<button
+						data-cy={`tag-${tag.name}`}
 						onClick={() => changeActiveCategory(tag.name)}
 						key={tag.name}
 						className={cls(
@@ -52,6 +53,7 @@ const ArticleList = ({ articles, tags }) => {
 									passHref
 								>
 									<motion.a
+										data-cy={`article-link-${article.id}`}
 										layout
 										initial={{
 											opacity: 0,

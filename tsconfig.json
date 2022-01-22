@@ -19,9 +19,16 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "baseUrl": "./",
+    "types": [
+      "cypress"
+    ],
     "paths": {
-      "@features/*": ["features/*"],
-      "@shared/*": ["shared/*"]
+      "@features/*": [
+        "features/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ]
     }
   },
   "include": [
@@ -31,6 +38,5 @@
   ],
   "exclude": [
     "node_modules"
-  ],
-  
+  ]
 }
