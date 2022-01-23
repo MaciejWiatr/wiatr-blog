@@ -14,8 +14,10 @@ jobs:
         run: npm install -g yarn
       - name: Install deps
         run: yarn install
-      - run: yarn build 
+      - run: yarn build:coverage 
       - run: yarn e2e:headless
+      - name: Display coverage
+        run : npx nyc report --reporter=text-summary --check-coverage
       - name: Uninstall Yarn
         if: always()
         run: npm uninstall -g yarn
