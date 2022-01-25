@@ -38,3 +38,6 @@ cypress/results/*
 cypress/reports/*
 cypress/screenshots/*
 cypress/videos/*
+
+coverage
+.nyc_output

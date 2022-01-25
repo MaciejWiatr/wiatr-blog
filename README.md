@@ -1,34 +1,50 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Personal blog 📝
 
-## Getting Started
+This repo contains the source code of my personal blog you can find down here:
 
-First, run the development server:
+https://blog.maciejwiatr.pl/
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+_(there is no content <ins>yet<ins/>)_
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+-   Incrementally generated static pages from GraphQL endpoint
+-   Contact form with (not so) sophisticated validation
+-   E2E Tests
+-   Smooth animations using framer-motion
+-   Views counter
+-   MongoDB store with prisma
+-   Global state with Zustand and Localstorage
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## Screenshots
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+<img src="https://i.imgur.com/N2JQ6mz.png" width="400"  alt="App screenshot" /><br/>
+<img src="https://i.imgur.com/ReInjU7.png" width="400"  alt="App screenshot" /><br/>
+<img src="https://i.imgur.com/3VTU0Rd.png" width="400"  alt="App screenshot" /><br/>
 
-## Learn More
+## Important note
 
-To learn more about Next.js, take a look at the following resources:
+The design is heavly inspired by Kent C Dods Blog so design-wise all kudos should go to this peep:
+https://twitter.com/kentcdodds
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**Client:**
 
-## Deploy on Vercel
+-   React
+-   Next.js
+-   Tailwind
+-   Framer-Motion
+-   Zustand
+-   Apollo Graphql
+-   Axios
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Server:**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+-   Nextjs API Routes hosted on vercel
+-   MongoDB
+-   Prisma Client
+-   next-connect
+
+**Deployed to:**
+Vercel △
