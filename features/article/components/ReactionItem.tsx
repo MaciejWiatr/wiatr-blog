@@ -1,52 +1,66 @@
 import Twemoji from "@shared/components/Twemoji";
-import { motion, useAnimation } from "framer-motion";
+import { motion, useAnimation, Variants } from "framer-motion";
 import cls from "classnames";
+
+const containerVariants: Variants = {
+	initial: {
+		y: -7,
+	},
+	animateIn: (i) => ({
+		rotateZ: i * 72,
+		transition: {
+			delay: i * 0.1,
+			type: "tween",
+			duration: 0.25,
+		},
+	}),
+	animateOut: (i) => ({
+		rotateZ: 0,
+		transition: {
+			delay: i * 0.1,
+			type: "tween",
+		},
+	}),
+	exit: { y: 0 },
+};
+
+const emojiVariants: Variants = {
+	animateIn: (i) => ({
+		scale: 1.25,
+		y: 60,
+		opacity: 1,
+		transition: {
+			delay: i * 0.1,
+			type: "spring",
+		},
+	}),
+	animateOut: (i) => ({
+		scale: 0.5,
+		y: 0,
+		opacity: 0,
+		transition: {
+			delay: i * 0.1,
+			type: "tween",
+		},
+	}),
+};
 
 const ReactionItem = ({ emoji, name, active, setReaction }) => {
 	const containerControls = useAnimation();
 	const emojiControls = useAnimation();
 
 	const onClick = async () => {
-		containerControls.set({ y: -7 });
+		containerControls.set("initial");
 		setReaction(name);
 		await Promise.all([
-			containerControls.start((i) => ({
-				rotateZ: i * 72,
-				transition: {
-					delay: i * 0.1,
-					type: "tween",
-					duration: 0.25,
-				},
-			})),
-			emojiControls.start((i) => ({
-				scale: 1.25,
-				y: 60,
-				opacity: 1,
-				transition: {
-					delay: i * 0.1,
-					type: "spring",
-				},
-			})),
+			containerControls.start("animateIn"),
+			emojiControls.start("animateIn"),
 		]);
 		await Promise.all([
-			containerControls.start((i) => ({
-				rotateZ: 0,
-				transition: {
-					delay: i * 0.1,
-					type: "tween",
-				},
-			})),
-			emojiControls.start((i) => ({
-				scale: 0.5,
-				y: 0,
-				opacity: 0,
-				transition: {
-					delay: i * 0.1,
-					type: "tween",
-				},
-			})),
+			containerControls.start("animateOut"),
+			emojiControls.start("animateOut"),
 		]);
-		containerControls.set({ y: 0 });
+		containerControls.set("exit");
 	};
 
 	return (
@@ -73,6 +87,7 @@ const ReactionItem = ({ emoji, name, active, setReaction }) => {
 							initial={{ y: 0 }}
 							className="absolute top-0 h-10"
 							custom={i}
+							variants={containerVariants}
 							animate={containerControls}
 							key={`${i}-container`}
 						>
@@ -82,6 +97,7 @@ const ReactionItem = ({ emoji, name, active, setReaction }) => {
 								key={i}
 								custom={i}
 								animate={emojiControls}
+								variants={emojiVariants}
 							>
 								<Twemoji emoji={emoji} />
 							</motion.div>
