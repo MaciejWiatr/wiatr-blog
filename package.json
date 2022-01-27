@@ -12,10 +12,16 @@
 		"e2e:build": "npm run build && npm run e2e",
 		"e2e:dev": "start-server-and-test dev http://localhost:3000 cypress",
 		"e2e": "start-server-and-test start http://localhost:3000 cypress",
-		"e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless"
+		"e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
+		"generate": "graphql-codegen -r dotenv/config"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.5.6",
+		"@graphql-codegen/cli": "^2.4.0",
+		"@graphql-codegen/typescript": "^2.4.2",
+		"@graphql-codegen/typescript-operations": "^2.2.2",
+		"@graphql-codegen/typescript-react-apollo": "^3.2.4",
+		"@graphql-codegen/typescript-react-query": "^3.3.2",
 		"@prisma/client": "^3.8.1",
 		"@types/react-transition-group": "^4.4.4",
 		"axios": "^0.24.0",
@@ -40,6 +46,7 @@
 		"sass": "^1.46.0",
 		"swr": "^1.1.2",
 		"validator": "^13.7.0",
+		"zod": "^3.11.6",
 		"zustand": "^3.6.8"
 	},
 	"devDependencies": {
