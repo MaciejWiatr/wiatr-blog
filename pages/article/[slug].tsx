@@ -1,11 +1,12 @@
 import { gql } from "@apollo/client";
 import { ArticlePage } from "@features/article";
+import { GetArticleQuery, GetSlugListQuery } from "@shared/graphql/generated";
 import client from "@shared/lib/apollo-client";
 
 export default ArticlePage;
 
 export async function getStaticPaths() {
-	const { data } = await client.query({
+	const { data }: { data: GetSlugListQuery } = await client.query({
 		query: gql`
 			query GetSlugList {
 				articles {
@@ -28,7 +29,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	const { slug } = params;
 
-	let { data } = await client.query({
+	let { data }: { data: GetArticleQuery } = await client.query({
 		query: gql`
 			query GetArticle {
 				article(where: { slug: "${slug}" }) {

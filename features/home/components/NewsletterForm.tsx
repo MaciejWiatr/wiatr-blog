@@ -5,9 +5,7 @@ import sanitizeHtml from "sanitize-html";
 import cls from "classnames";
 import addNewsletterSubscriber from "../api/newsletter";
 
-interface INewsletterFormProps {}
-
-const NewsletterForm: FC<INewsletterFormProps> = ({}) => {
+const NewsletterForm = () => {
 	const [formError, setFormError] = useState("");
 	const [formSuccess, setFormSuccess] = useState("");
 	const inputRef = useRef(null);

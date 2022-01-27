@@ -5,8 +5,15 @@ import filterArticlesByTagName from "../utils/filterArticles";
 import cls from "classnames";
 import corgi from "@shared/assets/corgi.jpg";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
+import { Article, Tag } from "@shared/graphql/generated";
 
-const ArticleList = ({ articles, tags }) => {
+const ArticleList = ({
+	articles,
+	tags,
+}: {
+	articles: Article[];
+	tags: Tag[];
+}) => {
 	const [activeCategory, setActiveCategory] = useState("");
 
 	const changeActiveCategory = (category) => {

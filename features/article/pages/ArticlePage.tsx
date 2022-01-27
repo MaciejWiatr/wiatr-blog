@@ -1,4 +1,5 @@
 import { Footer } from "@features/home";
+import { Article } from "@shared/graphql/generated";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -8,7 +9,7 @@ const Reactions = dynamic(() => import("../components/Reactions"), {
 import useArticleViews from "../hooks/useArticleViews";
 import ArticleLayout from "../layouts/ArticleLayout";
 
-const ArticlePage = ({ article }) => {
+const ArticlePage = ({ article }: { article: Article }) => {
 	const views = useArticleViews(article.id);
 
 	return (

@@ -7,7 +7,7 @@ const NewsletterForm = dynamic(
 );
 import RickGIF from "./Rick";
 
-const Footer = ({ disableRick }) => {
+const Footer = ({ disableRick }: { disableRick: boolean }) => {
 	return (
 		<>
 			<footer className="flex flex-wrap pt-8 pb-8 border-t border-gray-600">
