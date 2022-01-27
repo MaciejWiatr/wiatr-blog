@@ -1,5 +1,7 @@
 # Personal blog 📝
 
+![tests badge](https://github.com/MaciejWiatr/wiatr-blog/actions/workflows/run-tests.yml/badge.svg)
+
 This repo contains the source code of my personal blog you can find down here:
 
 https://blog.maciejwiatr.pl/
