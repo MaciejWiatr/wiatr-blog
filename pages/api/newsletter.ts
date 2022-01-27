@@ -1,17 +1,23 @@
-import isEmail from "validator/lib/isEmail";
 import { NextApiRequest, NextApiResponse } from "next";
 import nc from "next-connect";
 import { PrismaClient } from "@prisma/client";
+import { z } from "zod";
 
 const handler = nc<NextApiRequest, NextApiResponse>();
 const prisma = new PrismaClient();
 
+const reqSchema = z.object({
+	email: z.string().email(),
+});
+
 handler.post(async (req, res) => {
 	const { email } = req.body;
 
-	if (!isEmail(email)) {
+	const validation = reqSchema.safeParse(req.body);
+
+	if (!validation.success) {
 		res.status(400).json({
-			message: "Email is not valid",
+			message: "Bad request",
 		});
 		return;
 	}

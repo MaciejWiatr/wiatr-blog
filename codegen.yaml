@@ -1,0 +1,10 @@
+schema: ${NEXT_PUBLIC_API_URL}
+documents: './shared/graphql/queries/**/*.*'
+generates:
+  ./shared/graphql/generated.ts:
+    plugins:
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      withHooks: false
