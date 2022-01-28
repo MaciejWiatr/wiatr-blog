@@ -7,16 +7,15 @@ import corgi from "@shared/assets/corgi.jpg";
 import { AnimatePresence, AnimateSharedLayout, motion } from "framer-motion";
 import { Article, Tag } from "@shared/graphql/generated";
 
-const ArticleList = ({
-	articles,
-	tags,
-}: {
+interface IProps {
 	articles: Article[];
 	tags: Tag[];
-}) => {
-	const [activeCategory, setActiveCategory] = useState("");
+}
 
-	const changeActiveCategory = (category) => {
+const ArticleList = ({ articles, tags }: IProps) => {
+	const [activeCategory, setActiveCategory] = useState<string>("");
+
+	const changeActiveCategory = (category: string) => {
 		if (category === activeCategory) {
 			setActiveCategory("");
 			return;
@@ -29,24 +28,25 @@ const ArticleList = ({
 			<h2 className="mb-6 font-semibold">Wyszukaj artykuły po tagach</h2>
 			<ul className="flex flex-wrap w-full gap-3">
 				{tags.map((tag) => (
-					<button
-						data-cy={`tag-${tag.name}`}
-						onClick={() => changeActiveCategory(tag.name)}
-						key={tag.name}
-						className={cls(
-							"p-2 bg-gray-700 rounded-full pl-6 pr-6 pt-3 pb-3 text-gray-300 cursor-pointer hover:ring-2 ring-white hover:bg-transparent transition-all",
-							{
-								"bg-gray-900 text-gray-100":
-									activeCategory === tag.name,
-							}
-						)}
-					>
-						{tag.name}
-					</button>
+					<li key={tag.name}>
+						<button
+							data-cy={`tag-${tag.name}`}
+							onClick={() => changeActiveCategory(tag.name)}
+							className={cls(
+								"p-2 bg-gray-700 rounded-full pl-6 pr-6 pt-3 pb-3 text-gray-300 cursor-pointer hover:ring-2 ring-white hover:bg-transparent transition-all",
+								{
+									"bg-gray-900 text-gray-100":
+										activeCategory === tag.name,
+								}
+							)}
+						>
+							{tag.name}
+						</button>
+					</li>
 				))}
 			</ul>
 			<AnimateSharedLayout>
-				<motion.section
+				<motion.div
 					layout
 					id="articles"
 					className="grid grid-cols-1 gap-8 mt-8 sm:grid-cols-2 lg:grid-cols-3"
@@ -80,7 +80,7 @@ const ArticleList = ({
 												layout="responsive"
 												className="object-cover overflow-hidden transition-all rounded-xl hover:scale-110"
 												src={article.image.url}
-												alt="article image"
+												alt={article.title}
 												loading="lazy"
 												placeholder="blur"
 												blurDataURL={corgi.src}
@@ -102,7 +102,7 @@ const ArticleList = ({
 							)
 						)}
 					</AnimatePresence>
-				</motion.section>
+				</motion.div>
 			</AnimateSharedLayout>
 		</section>
 	);

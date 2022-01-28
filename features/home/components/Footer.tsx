@@ -7,11 +7,15 @@ const NewsletterForm = dynamic(
 );
 import RickGIF from "./Rick";
 
-const Footer = ({ disableRick }: { disableRick: boolean }) => {
+interface IProps {
+	disableRick: boolean;
+}
+
+const Footer = ({ disableRick }: IProps) => {
 	return (
 		<>
 			<footer className="flex flex-wrap pt-8 pb-8 border-t border-gray-600">
-				<div className="w-full md:w-1/2">
+				<section className="w-full md:w-1/2">
 					<h2 className="text-xl font-semibold">
 						Może zostaniesz na dłużej?
 					</h2>
@@ -20,8 +24,8 @@ const Footer = ({ disableRick }: { disableRick: boolean }) => {
 						otrzymywać informacje o nowych postach
 					</p>
 					<NewsletterForm />
-				</div>
-				<div className="flex flex-col items-start w-full mt-4 md:mt-0 md:w-1/2 md:text-right md:items-end">
+				</section>
+				<section className="flex flex-col items-start w-full mt-4 md:mt-0 md:w-1/2 md:text-right md:items-end">
 					<h2 className="text-xl font-semibold">Kontakt</h2>
 					<span className="max-w-md my-2 text-xs text-gray-400 md:text-sm">
 						email:{" "}
@@ -61,7 +65,7 @@ const Footer = ({ disableRick }: { disableRick: boolean }) => {
 							</Link>
 						</li>
 					</ul>
-				</div>
+				</section>
 			</footer>
 			{!disableRick && <RickGIF />}
 		</>

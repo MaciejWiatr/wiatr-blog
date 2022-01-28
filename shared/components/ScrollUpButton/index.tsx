@@ -14,8 +14,16 @@ const ScrollUpButton = () => {
 		}
 	}, [scrollY]);
 
+	const scrollToTop = () => {
+		window.scrollTo({
+			top: 0,
+			behavior: "smooth",
+		});
+	};
+
 	return (
 		<button
+			aria-label="Przejdź na górę"
 			data-cy="scroll-up-button"
 			className={cls(
 				"fixed bottom-0 right-0 p-2 m-6 text-gray-400 transition-all bg-gray-700 rounded-full cursor-pointer hover:ring-2 ring-white",
@@ -23,12 +31,7 @@ const ScrollUpButton = () => {
 					"opacity-0": !isVisible,
 				}
 			)}
-			onClick={() => {
-				window.scrollTo({
-					top: 0,
-					behavior: "smooth",
-				});
-			}}
+			onClick={scrollToTop}
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

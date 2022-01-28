@@ -1,6 +1,10 @@
 import Navbar from "@shared/components/Navbar";
 
-const ArticleLayout = ({ children }) => {
+interface IProps {
+	children: React.ReactNode;
+}
+
+const ArticleLayout = ({ children }: IProps) => {
 	return (
 		<div className="min-h-screen bg-gray-800 text-white w-full pt-[5vh] font-poppins">
 			<div className="mx-[10vw]">

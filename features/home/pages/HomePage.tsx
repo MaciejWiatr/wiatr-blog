@@ -3,13 +3,12 @@ import { Article, Tag } from "@shared/graphql/generated";
 import { Header, ArticleList, Footer } from "..";
 import Encouragement from "../components/Encouragement";
 
-export default function HomePage({
-	articles,
-	tags,
-}: {
+interface IProps {
 	articles: Article[];
 	tags: Tag[];
-}) {
+}
+
+export default function HomePage({ articles, tags }: IProps) {
 	return (
 		<HomeLayout>
 			<Header />

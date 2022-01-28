@@ -9,7 +9,11 @@ const Reactions = dynamic(() => import("../components/Reactions"), {
 import useArticleViews from "../hooks/useArticleViews";
 import ArticleLayout from "../layouts/ArticleLayout";
 
-const ArticlePage = ({ article }: { article: Article }) => {
+interface IProps {
+	article: Article;
+}
+
+const ArticlePage = ({ article }: IProps) => {
 	const views = useArticleViews(article.id);
 
 	return (
@@ -42,7 +46,7 @@ const ArticlePage = ({ article }: { article: Article }) => {
 				publisherName="Maciej Wiatr"
 				publisherLogo="https://blog.maciejwiatr.pl/favicon.png"
 			/>
-			<header className="mt-[20vh]">
+			<header className="mt-48">
 				<div className="md:mx-24">
 					<h1 className="text-5xl font-normal leading-tight">
 						{article.title}

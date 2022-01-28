@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-const useArticleViews = (id) => {
+const useArticleViews = (id: string) => {
 	const [views, setViews] = useState(0);
 
 	useEffect(() => {

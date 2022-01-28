@@ -1,19 +1,13 @@
-import { gql } from "@apollo/client";
 import { ArticlePage } from "@features/article";
 import { GetArticleQuery, GetSlugListQuery } from "@shared/graphql/generated";
+import { GetArticle, GetSlugList } from "@shared/graphql/queries/article";
 import client from "@shared/lib/apollo-client";
 
 export default ArticlePage;
 
 export async function getStaticPaths() {
 	const { data }: { data: GetSlugListQuery } = await client.query({
-		query: gql`
-			query GetSlugList {
-				articles {
-					slug
-				}
-			}
-		`,
+		query: GetSlugList,
 	});
 
 	const paths = data.articles.map((article) => ({
@@ -29,29 +23,9 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
 	const { slug } = params;
 
-	let { data }: { data: GetArticleQuery } = await client.query({
-		query: gql`
-			query GetArticle {
-				article(where: { slug: "${slug}" }) {
-					id
-					title
-					tags {
-						name
-					}
-					slug
-					image {
-						url
-					}
-					content {
-						markdown
-                        html
-						text
-					}
-					createdAt
-					views
-				}
-			}
-		`,
+	const { data }: { data: GetArticleQuery } = await client.query({
+		query: GetArticle,
+		variables: { slug },
 	});
 
 	return {

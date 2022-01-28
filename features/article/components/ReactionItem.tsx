@@ -45,7 +45,14 @@ const emojiVariants: Variants = {
 	}),
 };
 
-const ReactionItem = ({ emoji, name, active, setReaction }) => {
+interface IProps {
+	emoji: string;
+	name: string;
+	active: boolean;
+	setReaction: (name: string) => void;
+}
+
+const ReactionItem = ({ emoji, name, active, setReaction }: IProps) => {
 	const containerControls = useAnimation();
 	const emojiControls = useAnimation();
 

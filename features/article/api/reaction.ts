@@ -1,6 +1,10 @@
 import axios from "axios";
+import { reactionType } from "../types/reaction.type";
 
-const createOrUpdateReaction = async (articleId, reactionName, userId) =>
-	axios.post(`/api/article/reaction`, { articleId, reactionName, userId });
+const createOrUpdateReaction = async (
+	articleId: string,
+	reactionName: reactionType,
+	userId: string
+) => axios.post(`/api/article/reaction`, { articleId, reactionName, userId });
 
 export default createOrUpdateReaction;

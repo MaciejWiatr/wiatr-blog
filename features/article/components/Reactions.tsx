@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react";
 import createOrUpdateReaction from "../api/reaction";
 import useReactionStore from "../store/useReactionStore";
+import { reactionType } from "../types/reaction.type";
 import ReactionItem from "./ReactionItem";
+
+interface IProps {
+	id: string;
+}
 
 const reactionList = [
 	{
@@ -22,7 +27,7 @@ const reactionList = [
 	},
 ];
 
-const Reactions = ({ id }) => {
+const Reactions = ({ id }: IProps) => {
 	const { getReaction, addReaction, reactions, userId } = useReactionStore();
 	const [active, setActive] = useState(null);
 
@@ -30,7 +35,7 @@ const Reactions = ({ id }) => {
 		setActive(getReaction(id));
 	}, [getReaction, reactions, id]);
 
-	const changeReaction = (reaction) => {
+	const changeReaction = (reaction: reactionType) => {
 		addReaction(id, reaction);
 		createOrUpdateReaction(id, reaction, userId);
 	};
