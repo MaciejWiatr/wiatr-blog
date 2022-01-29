@@ -3,6 +3,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { CSSTransition, SwitchTransition } from "react-transition-group";
 import "../styles/globals.scss";
+import { SessionProvider } from "next-auth/react";
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 	return (
@@ -17,7 +18,9 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 					classNames="page"
 					timeout={300}
 				>
-					<Component {...pageProps} />
+					<SessionProvider>
+						<Component {...pageProps} />
+					</SessionProvider>
 				</CSSTransition>
 			</SwitchTransition>
 			<ScrollUpButton />
