@@ -3,7 +3,7 @@ import { Article } from "@shared/graphql/generated";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import Image from "next/image";
-import Comments from "../components/Comments";
+import CommentsContainer from "../components/Comments/CommentsContainer";
 const Reactions = dynamic(() => import("../components/Reactions"), {
 	ssr: false,
 });
@@ -73,7 +73,7 @@ const ArticlePage = ({ article }: IProps) => {
 				dangerouslySetInnerHTML={{ __html: article.content.html }}
 			></article>
 			<Reactions id={article.id} />
-			<Comments articleId={article.id} />
+			<CommentsContainer articleId={article.id} />
 			<Footer disableRick={true} />
 		</ArticleLayout>
 	);

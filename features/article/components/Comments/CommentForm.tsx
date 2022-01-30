@@ -1,8 +1,10 @@
 import { useSession } from "next-auth/react";
 import React, { FormEvent, useRef } from "react";
-import { uploadComment } from "../api/comment";
+import { uploadComment } from "@features/article/api/comment";
+import { useSWRConfig } from "swr";
 
 const CommentForm = ({ articleId }) => {
+	const { mutate } = useSWRConfig();
 	const { data: session } = useSession();
 	const inputRef = useRef(null);
 
@@ -16,6 +18,7 @@ const CommentForm = ({ articleId }) => {
 		});
 		// @ts-ignore
 		event.target.reset();
+		mutate(`/api/article/comment/${articleId}`);
 	};
 
 	return (
@@ -29,7 +32,7 @@ const CommentForm = ({ articleId }) => {
 				/>
 				<button
 					type="submit"
-					className="p-3 pl-4 pr-4 text-sm bg-gray-700 rounded"
+					className="p-3 pl-4 pr-4 text-sm transition-all bg-gray-700 rounded hover:bg-gray-600"
 				>
 					Dodaj
 				</button>

@@ -2,6 +2,7 @@ import { signIn, useSession, signOut } from "next-auth/react";
 import React from "react";
 import { BsGithub } from "react-icons/bs";
 import CommentForm from "./CommentForm";
+import CommentList from "./CommentList";
 
 interface IProps {
 	articleId: string;
@@ -42,19 +43,7 @@ const Comments = ({ articleId }: IProps) => {
 				</div>
 			</div>
 			{session && <CommentForm articleId={articleId} />}
-			<div className="flex flex-row mt-6 mb-6">
-				<div className="w-full p-6 rounded-lg ">
-					<div className="flex items-center justify-between">
-						<p className="my-1 text-white">Maciej Wiatr</p>
-					</div>
-					<p className="text-xs text-gray-400 md:w-3/4 md:text-sm">
-						{" "}
-						Quis commodo consectetur reprehenderit sint magna ea
-						consectetur consequat cupidatat Lorem cupidatat
-						cupidatat.
-					</p>
-				</div>
-			</div>
+			<CommentList articleId={articleId} />
 		</div>
 	);
 };

@@ -3,9 +3,9 @@ import nc from "next-connect";
 import { PrismaClient } from "@prisma/client";
 import { z } from "zod";
 
-const handler = nc<NextApiRequest, NextApiResponse>();
+const handler = nc<NextApiRequest, NextApiResponse>({ attachParams: true });
 const prisma = new PrismaClient();
-const reqSchema = z.object({
+const postReqSchema = z.object({
 	articleId: z.string(),
 	comment: z.string(),
 	userId: z.string(),
@@ -15,7 +15,7 @@ const reqSchema = z.object({
 handler.post(async (req, res) => {
 	const { articleId, comment, userName, userId } = req.body;
 
-	const validation = reqSchema.safeParse(req.body);
+	const validation = postReqSchema.safeParse(req.body);
 
 	if (!validation.success) {
 		res.status(400).json({
