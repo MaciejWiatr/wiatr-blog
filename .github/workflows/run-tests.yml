@@ -2,6 +2,7 @@ name: Run tests on push
 on: [push]
 env:
   NEXT_PUBLIC_API_URL: ${{secrets.NEXT_PUBLIC_API_URL}}
+  MONGO_URI: ${{secrets.MONGO_URI}}
 jobs:
   build:
     runs-on: ubuntu-latest
