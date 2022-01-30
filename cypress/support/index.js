@@ -18,3 +18,32 @@ import "./commands";
 import "@cypress/code-coverage/support";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
+
+beforeEach(() => {
+	cy.intercept("GET", "/api/article/comment/*", [
+		{
+			id: "abcdefgtmamgjpgi",
+			articleId: "ckyok8sg0174w0c995mvrz2wq",
+			comment: "Wow tests are great",
+			userName: "Fellow tester",
+			userId: "test@tester.com",
+			created: "2022-01-30T15:52:48.385Z",
+		},
+		{
+			id: "abcdefgtmamgjpgi",
+			articleId: "ckyok8sg0174w0c995mvrz2wq",
+			comment: "Cypress is amazing",
+			userName: "Fellow tester",
+			userId: "test@tester.com",
+			created: "2022-01-30T15:36:06.361Z",
+		},
+		{
+			id: "abcdefgtmamgjpgi",
+			articleId: "ckyok8sg0174w0c995mvrz2wq",
+			comment: "Bonjour messieurs",
+			userName: "Fellow tester",
+			userId: "test@tester.com",
+			created: "2022-01-29T17:11:49.682Z",
+		},
+	]);
+});

@@ -25,3 +25,12 @@ model email {
   email   String
   created DateTime @default(now())
 }
+
+model Comment {
+  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  articleId String
+  comment   String
+  userName  String
+  userId    String
+  created   DateTime @default(now())
+}

@@ -3,6 +3,7 @@ import { Article } from "@shared/graphql/generated";
 import { ArticleJsonLd, NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 import Image from "next/image";
+import CommentsContainer from "../components/Comments/CommentsContainer";
 const Reactions = dynamic(() => import("../components/Reactions"), {
 	ssr: false,
 });
@@ -46,6 +47,7 @@ const ArticlePage = ({ article }: IProps) => {
 				publisherName="Maciej Wiatr"
 				publisherLogo="https://blog.maciejwiatr.pl/favicon.png"
 			/>
+
 			<header className="mt-48">
 				<div className="md:mx-24">
 					<h1 className="text-5xl font-normal leading-tight">
@@ -69,15 +71,9 @@ const ArticlePage = ({ article }: IProps) => {
 				id="markdown"
 				className="pt-12 pb-12 md:mx-24"
 				dangerouslySetInnerHTML={{ __html: article.content.html }}
-			>
-				{/* <ReactMarkdown
-					rehypePlugins={[rehypeRaw]}
-					remarkPlugins={[remarkGfm]}
-				>
-					{article.content.markdown}
-				</ReactMarkdown> */}
-			</article>
+			></article>
 			<Reactions id={article.id} />
+			<CommentsContainer articleId={article.id} />
 			<Footer disableRick={true} />
 		</ArticleLayout>
 	);
