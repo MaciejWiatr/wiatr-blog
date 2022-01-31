@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run e2e:headless
+git-branch-is master && npm run e2e:headless
+exit 1
