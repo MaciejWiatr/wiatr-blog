@@ -1,20 +1,29 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import useInView from "react-cool-inview";
 import { FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 const NewsletterForm = dynamic(
-	() => import("@features/home/components/NewsletterForm"),
+	() => import("@shared/components/Footer/NewsletterForm"),
 	{ ssr: false }
 );
-import RickGIF from "./Rick";
+import RickGIF from "../Rick";
 
 interface IProps {
 	disableRick: boolean;
 }
 
-const Footer = ({ disableRick }: IProps) => {
+const FooterContent = ({ disableRick }: IProps) => {
+	const { observe, inView } = useInView({
+		onEnter: ({ unobserve }) => {
+			unobserve();
+		},
+	});
 	return (
 		<>
-			<footer className="flex flex-wrap pt-8 pb-8 border-t border-gray-600">
+			<div
+				ref={observe}
+				className="flex flex-wrap pt-8 pb-8 border-t border-gray-600"
+			>
 				<section className="w-full md:w-1/2">
 					<h2 className="text-xl font-semibold">
 						Może zostaniesz na dłużej?
@@ -23,7 +32,7 @@ const Footer = ({ disableRick }: IProps) => {
 						Zapisz się do mojego newslettera aby regularnie
 						otrzymywać informacje o nowych postach
 					</p>
-					<NewsletterForm />
+					{inView && <NewsletterForm />}
 				</section>
 				<section className="flex flex-col items-start w-full mt-4 md:mt-0 md:w-1/2 md:text-right md:items-end">
 					<h2 className="text-xl font-semibold">Kontakt</h2>
@@ -66,10 +75,10 @@ const Footer = ({ disableRick }: IProps) => {
 						</li>
 					</ul>
 				</section>
-			</footer>
+			</div>
 			{!disableRick && <RickGIF />}
 		</>
 	);
 };
 
-export default Footer;
+export default FooterContent;

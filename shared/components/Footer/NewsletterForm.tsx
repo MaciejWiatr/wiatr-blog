@@ -1,9 +1,9 @@
 import Twemoji from "@shared/components/Twemoji";
-import { FC, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import isEmail from "validator/lib/isEmail";
 import sanitizeHtml from "sanitize-html";
 import cls from "classnames";
-import addNewsletterSubscriber from "../api/newsletter";
+import addNewsletterSubscriber from "../../api/newsletter";
 
 const NewsletterForm = () => {
 	const [formError, setFormError] = useState("");
