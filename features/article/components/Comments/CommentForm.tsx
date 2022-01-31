@@ -3,7 +3,11 @@ import React, { FormEvent, useRef } from "react";
 import { uploadComment } from "@features/article/api/comment";
 import { useSWRConfig } from "swr";
 
-const CommentForm = ({ articleId }) => {
+interface IProps {
+	articleId: string;
+}
+
+const CommentForm = ({ articleId }: IProps) => {
 	const { mutate } = useSWRConfig();
 	const { data: session } = useSession();
 	const inputRef = useRef(null);

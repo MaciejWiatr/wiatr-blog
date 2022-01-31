@@ -1,5 +1,6 @@
+import { ArticleContext } from "@features/article/contexts/ArticleContext";
 import { signIn, useSession, signOut } from "next-auth/react";
-import React from "react";
+import React, { useContext } from "react";
 import { BsGithub } from "react-icons/bs";
 import CommentForm from "./CommentForm";
 import CommentList from "./CommentList";
@@ -8,8 +9,9 @@ interface IProps {
 	articleId: string;
 }
 
-const Comments = ({ articleId }: IProps) => {
+const Comments = () => {
 	const { data: session } = useSession();
+	const { article } = useContext(ArticleContext);
 
 	const signInWithGithub = () => signIn("github");
 
@@ -42,8 +44,8 @@ const Comments = ({ articleId }: IProps) => {
 					)}
 				</div>
 			</div>
-			{session && <CommentForm articleId={articleId} />}
-			<CommentList articleId={articleId} />
+			{session && <CommentForm articleId={article.id} />}
+			<CommentList articleId={article.id} />
 		</div>
 	);
 };

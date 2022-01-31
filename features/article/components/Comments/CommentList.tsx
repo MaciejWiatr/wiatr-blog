@@ -2,7 +2,11 @@ import { getComments } from "@features/article/api/comment";
 import React from "react";
 import useSWR from "swr";
 
-const CommentList = ({ articleId }) => {
+interface IProps {
+	articleId: string;
+}
+
+const CommentList = ({ articleId }: IProps) => {
 	const { data, error } = useSWR(
 		`/api/article/comment/${articleId}`,
 		getComments
