@@ -15,7 +15,7 @@
 		"e2e:headless": "start-server-and-test start http://localhost:3000 cypress:headless",
 		"generate": "graphql-codegen -r dotenv/config",
 		"prepare": "husky install",
-		"e2e:prepush": "git-branch-is -q main && npm run e2e:build && npm run e2e:headless"
+		"e2e:prepush": "git-branch-is main --quiet && npm run e2e:build && npm run e2e:headless"
 	},
 	"dependencies": {
 		"@apollo/client": "^3.5.6",
