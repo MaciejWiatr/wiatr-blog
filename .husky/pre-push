@@ -1,4 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-e2e:build
+npm run build
+npm run e2e:headless
