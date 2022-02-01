@@ -1,6 +1,7 @@
 # Personal blog 📝
 
 ![tests badge](https://github.com/MaciejWiatr/wiatr-blog/actions/workflows/run-tests.yml/badge.svg)
+[![wakatime](https://wakatime.com/badge/user/536c1fd6-7072-4a44-9f86-1a58cd33d66d/project/be201529-85a2-4076-9db6-b07285920016.svg)](https://wakatime.com/badge/user/536c1fd6-7072-4a44-9f86-1a58cd33d66d/project/be201529-85a2-4076-9db6-b07285920016)
 
 This repo contains the source code of my personal blog you can find down here:
 
