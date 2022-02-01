@@ -1,15 +1,21 @@
 import { getComments } from "@features/article/api/comment";
-import React from "react";
+import React, { useMemo } from "react";
 import useSWR from "swr";
+import HashLoader from "react-spinners/HashLoader";
 
 interface IProps {
 	articleId: string;
 }
 
 const CommentList = ({ articleId }: IProps) => {
-	const { data, error } = useSWR(
+	const { data, error, isValidating } = useSWR(
 		`/api/article/comment/${articleId}`,
 		getComments
+	);
+
+	const isLoading = useMemo(
+		() => data === undefined && isValidating,
+		[data, isValidating]
 	);
 
 	return (
@@ -34,6 +40,11 @@ const CommentList = ({ articleId }: IProps) => {
 						</p>
 					</div>
 				))}
+			{isLoading && (
+				<div className="flex items-center justify-center w-full h-full p-12">
+					<HashLoader color="#f3f4f6" size={25} />
+				</div>
+			)}
 		</div>
 	);
 };
