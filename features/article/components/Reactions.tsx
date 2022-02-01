@@ -1,12 +1,9 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import createOrUpdateReaction from "../api/reaction";
+import { ArticleContext } from "../contexts/ArticleContext";
 import useReactionStore from "../store/useReactionStore";
 import { reactionType } from "../types/reaction.type";
 import ReactionItem from "./ReactionItem";
-
-interface IProps {
-	id: string;
-}
 
 const reactionList = [
 	{
@@ -27,17 +24,18 @@ const reactionList = [
 	},
 ];
 
-const Reactions = ({ id }: IProps) => {
+const Reactions = () => {
+	const { article } = useContext(ArticleContext);
 	const { getReaction, addReaction, reactions, userId } = useReactionStore();
 	const [active, setActive] = useState(null);
 
 	useEffect(() => {
-		setActive(getReaction(id));
-	}, [getReaction, reactions, id]);
+		setActive(getReaction(article.id));
+	}, [getReaction, reactions, article.id]);
 
 	const changeReaction = (reaction: reactionType) => {
-		addReaction(id, reaction);
-		createOrUpdateReaction(id, reaction, userId);
+		addReaction(article.id, reaction);
+		createOrUpdateReaction(article.id, reaction, userId);
 	};
 
 	return (
