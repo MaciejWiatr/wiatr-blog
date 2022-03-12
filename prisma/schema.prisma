@@ -9,25 +9,25 @@ datasource db {
 }
 
 model reaction {
-  id        String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
   userId    String
   articleId String
   reaction  String
 }
 
 model views {
-  id        String @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
   articleId String
 }
 
 model email {
-  id      String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id      String   @id @default(auto()) @map("_id") @db.ObjectId
   email   String
   created DateTime @default(now())
 }
 
 model Comment {
-  id        String   @id @default(dbgenerated()) @map("_id") @db.ObjectId
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
   articleId String
   comment   String
   userName  String
