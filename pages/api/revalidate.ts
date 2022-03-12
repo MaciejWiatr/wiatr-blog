@@ -4,9 +4,9 @@ export default async function handler(
 	req: NextApiRequest,
 	res: NextApiResponse
 ) {
-	const { RevalidationToken } = req.headers;
+	const { revalidationtoken } = req.headers;
 	const { data } = req.body;
-	if (RevalidationToken !== process.env.REVALIDATION_TOKEN) {
+	if (revalidationtoken !== process.env.REVALIDATION_TOKEN) {
 		return res.status(401).json({ message: "Invalid token" });
 	}
 
