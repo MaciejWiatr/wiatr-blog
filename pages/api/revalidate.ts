@@ -12,6 +12,7 @@ export default async function handler(
 
 	try {
 		await res.unstable_revalidate(`/article/${data.slug}`);
+		console.log(`Revalidated article ${data.slug}`);
 		return res.json({ revalidated: true });
 	} catch (err) {
 		return res.status(500).send("Error revalidating");
